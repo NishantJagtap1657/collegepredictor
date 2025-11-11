@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple CSS Grid</title>
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #f72585;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 2.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 1rem;
+        }
+
+        .grid-item {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .grid-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .item-content {
+            padding: 1.5rem;
+        }
+
+        .item-content h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+
+        .item-content p {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+        }
+
+        /* Different color variants for grid items */
+        .grid-item:nth-child(3n+1) .badge {
+            background-color: var(--success);
+        }
+
+        .grid-item:nth-child(3n+2) .badge {
+            background-color: var(--warning);
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>You Can Predict Your Future Here</h1>
+        <div class="grid">
+            <!-- Grid Item 1 -->
+            <div class="grid-item">
+                <img src="engimc.jpg" alt="Engineering">
+                <div class="item-content">
+                    <span class="badge">MHT-CET</span>
+                    <h3>Engineering</h3>
+                    <p>You are the future engineers of this new era.</p>
+                    <p>you can convert your dream into reality here</p>
+                    <a href="index3.html" class="btn">Know more</a>
+                </div>
+            </div>
+
+            <!-- Grid Item 2 -->
+            <div class="grid-item">
+                <img src="mbbs1.webp" alt="City">
+                <div class="item-content">
+                    <span class="badge">NEET</span>
+                    <h3>MBBS</h3>
+                    <p>Experience the vibrant energy of modern cities and explore the architectural marvels that define our urban landscapes.</p>
+                    <a href="#index4.html" class="btn">Know more</a>
+                </div>
+            </div>
+
+            <!-- Grid Item 3 -->
+            <div class="grid-item">
+                <img src="jee1.jpg" alt="Tech">
+                <div class="item-content">
+                    <span class="badge">JEE</span>
+                    <h3>Engineering</h3>
+                    <p>Stay ahead of the curve with groundbreaking technological advancements that are shaping our tomorrow.</p>
+                    <a href="#index5.html" class="btn">Know more</a>
+                </div>
+            </div>
+
+            <!-- Grid Item 4 -->
+            <div class="grid-item">
+                <img src="pharmacy1.jpg" alt="Food">
+                <div class="item-content">
+                    <span class="badge">MHT-CET</span>
+                    <h3>Pharmacy</h3>
+                    <p>Embark on a gastronomic journey through diverse cuisines from around the world and their cultural significance.</p>
+                    <a href="#index6.html" class="btn">Know more</a>
+                </div>
+            </div>
+
+            <!-- Grid Item 5 -->
+            <div class="grid-item">
+                <img src="law1.jpg" alt="Sports">
+                <div class="item-content">
+                    <span class="badge">12th Percentage</span>
+                    <h3>Law</h3>
+                    <p>Push your limits with intensive training regimens and learn from professional athletes across various sports.</p>
+                    <a href="#index7.html" class="btn">Know more</a>
+                </div>
+            </div>
+
+            <!-- Grid Item 6 -->
+            <div class="grid-item">
+                <img src="diploma12.jpg" alt="Art">
+                <div class="item-content">
+                    <span class="badge">1oth Percentage</span>
+                    <h3>Diploma</h3>
+                    <p>Immerse yourself in the world of visual arts and discover how creativity knows no bounds in human expression.</p>
+                    <a href="#index8.html" class="btn">Know more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add click event to all grid items
+        document.querySelectorAll('.grid-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                // Don't trigger if clicking on a button
+                if (e.target.classList.contains('btn')) return;
+                
+                const title = this.querySelector('h3').textContent;
+                console.log(`Viewing details for: ${title}`);
+                
+                // In a real app, you might navigate to a detail page here
+                // For demo, we'll just animate the clicked item
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1) translateY(-5px)';
+                }, 300);
+            });
+        });
+
+        // Simple animation when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            const gridItems = document.querySelectorAll('.grid-item');
+            gridItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transitionDelay = `${index * 0.1}s`;
+                
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

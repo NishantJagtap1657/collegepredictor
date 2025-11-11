@@ -1,0 +1,126 @@
+<!-- =======================
+     FIRST PAGE: index.html
+     ======================= -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Shree Ganesh Counselling</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #6dd5ed, #2193b0);
+      color: #333;
+    }
+
+    header {
+      background: #0f2027;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .login-section {
+      max-width: 400px;
+      margin: 100px auto;
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    .login-section h2 {
+      margin-bottom: 20px;
+    }
+
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 12px 30px;
+      font-size: 16px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    #loginMessage {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: #0f2027;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Smart College Predictor</h1>
+  </header>
+
+  <section class="login-section">
+    <h2>Login to Continue</h2>
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="Enter Username" required />
+      <input type="password" id="password" placeholder="Enter Password" required />
+      <button type="submit">Login</button>
+    </form>
+    <p id="loginMessage"></p>
+  </section>
+
+  <footer>
+    <p>© Smart college predictor | Contact: 9699610349</p>
+  </footer>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (username !== " " && password !== "  ") {
+        document.getElementById("loginMessage").style.color = "blue";
+        document.getElementById("loginMessage").innerText = "loading!";
+        setTimeout(() => {
+          window.location.href = "index2.html";
+        }, 1500);
+      } else {
+        document.getElementById("loginMessage").style.color = "red";
+        document.getElementById("loginMessage").innerText = "Invalid username or password!";
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+<!-- =======================
+     SECOND PAGE: home.html
+     ======================= -->
+

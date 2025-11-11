@@ -1,0 +1,163 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pharmacy Counselling Tool</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #fff3e0);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: linear-gradient(to right, #0288d1, #26c6da);
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+    form {
+      max-width: 600px;
+      margin: 50px auto;
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+    input, select, button {
+      width: 100%;
+      margin: 15px 0;
+      padding: 16px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+    input:focus, select:focus, button:focus {
+      outline: none;
+      border-color: #26c6da;
+      box-shadow: 0 0 5px rgba(38, 198, 218, 0.5);
+    }
+    button {
+      background: linear-gradient(to right, #0288d1, #26c6da);
+      color: white;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button:hover {
+      background: linear-gradient(to right, #0277bd, #00acc1);
+    }
+    #result {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background: #e1f5fe;
+      margin-bottom: 16px;
+      padding: 18px;
+      border-left: 6px solid #0288d1;
+      border-radius: 12px;
+      font-size: 17px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Pharmacy Counselling Finder</h1>
+  </header>
+
+  <form id="pharmaForm">
+    <input type="number" id="percentile" placeholder="Enter your percentile" required />
+    <select id="category" required>
+      <option value="">Select Category</option>
+      <option value="GOPENH">GOPENH</option>
+      <option value="LOPENS">LOPENS</option>
+      <option value="SC">SC</option>
+      <option value="ST">ST</option>
+    </select>
+    <select id="course" required>
+      <option value="">Select Course</option>
+      <option value="B. Pharmacy">B. Pharmacy</option>
+      <option value="Pharm D">Pharm D</option>
+    </select>
+    <button type="submit">Find Colleges</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    const pharmaData = [
+      {
+        "College Code": "6001",
+        "College Name": "ABC College of Pharmacy",
+        "Course": "B. Pharmacy",
+        "Category": "GOPENH",
+        "Merit No": "12345",
+        "Percentile": "87.52"
+      },
+      {
+        "College Code": "6002",
+        "College Name": "XYZ College of Pharmacy",
+        "Course": "Pharm D",
+        "Category": "LOPENS",
+        "Merit No": "14567",
+        "Percentile": "78.65"
+      },
+      {
+        "College Code": "6003",
+        "College Name": "LMN Institute",
+        "Course": "B. Pharmacy",
+        "Category": "SC",
+        "Merit No": "19876",
+        "Percentile": "72.45"
+      }
+    ];
+
+    document.getElementById("pharmaForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const percentile = parseFloat(document.getElementById("percentile").value);
+      const category = document.getElementById("category").value;
+      const course = document.getElementById("course").value;
+
+      const results = pharmaData.filter(item =>
+        item.Category === category &&
+        item.Course === course &&
+        parseFloat(item.Percentile) <= percentile
+      );
+
+      let output = "<h3>Matching Colleges:</h3><ul>";
+      if (results.length > 0) {
+        results.forEach(college => {
+          output += `<li><strong>${college["College Name"]}</strong><br>Course: ${college["Course"]}<br>Percentile: ${college["Percentile"]}% | Category: ${college["Category"]}</li>`;
+        });
+      } else {
+        output += "<li>No matching colleges found.</li>";
+      }
+      output += "</ul>";
+      document.getElementById("result").innerHTML = output;
+    });
+  </script>
+</body>
+</html> -->

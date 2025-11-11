@@ -1,0 +1,164 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diploma Counselling Tool</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #fff3e0);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: linear-gradient(to right, #0288d1, #26c6da);
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+    form {
+      max-width: 600px;
+      margin: 50px auto;
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+    input, select, button {
+      width: 100%;
+      margin: 15px 0;
+      padding: 16px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+    input:focus, select:focus, button:focus {
+      outline: none;
+      border-color: #26c6da;
+      box-shadow: 0 0 5px rgba(38, 198, 218, 0.5);
+    }
+    button {
+      background: linear-gradient(to right, #0288d1, #26c6da);
+      color: white;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button:hover {
+      background: linear-gradient(to right, #0277bd, #00acc1);
+    }
+    #result {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background-color: #0288d1;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f1f1f1;
+    }
+    #downloadSection {
+      display: none;
+      text-align: center;
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Diploma Counselling Finder</h1>
+  </header>
+
+  <form id="diplomaForm">
+    <select id="branch" required>
+      <option value="">Select Branch</option>
+      <option value="Computer Engineering">Computer Engineering</option>
+      <option value="Mechanical Engineering">Mechanical Engineering</option>
+      <option value="Electrical Engineering">Electrical Engineering</option>
+      <option value="Civil Engineering">Civil Engineering</option>
+    </select>
+    <button type="submit">Find Colleges</button>
+  </form>
+
+  <div id="result"></div>
+  <div id="downloadSection">
+    <p style="margin-bottom: 10px; font-weight: bold;">Pay ₹100 to download the list:</p>
+    <button onclick="downloadExcel()">Download Excel</button>
+  </div>
+
+  <script>
+    let finalResults = [];
+
+    document.getElementById("diplomaForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const branch = document.getElementById("branch").value.trim().toLowerCase();
+
+      fetch("diplomacap1list.json")
+        .then(response => response.json())
+        .then(diplomaData => {
+          console.log("Loaded data:", diplomaData);
+
+          finalResults = diplomaData.filter(item => {
+            return item.Branch  && item.Branch.trim().toLowerCase() === branch;
+          });
+
+          let output = "<h3>Colleges offering " + branch + ":</h3>";
+          if (finalResults.length > 0) {
+            output += `<table><thead><tr>
+              <th>College Code</th><th>College Name</th><th>Branch</th>
+            </tr></thead><tbody>`;
+            finalResults.forEach(college => {
+              output += `<tr><td>${college["College Code"]}</td><td>${college["College Name"]}</td><td>${college["Branch name"]}</td></tr>`;
+            });
+            output += `</tbody></table>`;
+            document.getElementById("downloadSection").style.display = "block";
+          } else {
+            output += "<p>No colleges found offering this branch.</p>";
+            document.getElementById("downloadSection").style.display = "none";
+          }
+          document.getElementById("result").innerHTML = output;
+        })
+        .catch(error => {
+          console.error("Fetch error:", error);
+          document.getElementById("result").innerHTML = "<p style='color:red;'>Failed to load data. Make sure diplomacap1list.json is available and formatted correctly.</p>";
+        });
+    });
+
+    function downloadExcel() {
+      const ws = XLSX.utils.json_to_sheet(finalResults);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, "Colleges");
+      XLSX.writeFile(wb, "Diploma_Colleges_List.xlsx");
+    }
+  </script>
+</body>
+</html> -->
